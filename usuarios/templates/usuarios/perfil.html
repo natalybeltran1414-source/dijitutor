@@ -3,16 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <title>Mi Perfil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+        }
+        ul.user-info {
+            text-align: center;
+            list-style-type: none;
+            padding: 0;
+            margin: 20px auto;
+            width: 50%;
+        }
+        ul.user-info li {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        /* Menú de tareas */
+        .menu-tareas {
+            width: 50%;
+            margin: 30px auto;
+            padding: 20px;
+            border: 2px solid #444;
+            border-radius: 10px;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+        .menu-tareas h3 {
+            margin-bottom: 20px;
+        }
+        .menu-tareas ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .menu-tareas li {
+            margin: 15px 0; /* más separación entre tareas */
+        }
+        .menu-tareas a {
+            display: inline-block;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .menu-tareas a:hover {
+            background-color: #45a049;
+        }
+
+        /* Logout */
+        .logout {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .logout button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <h2>Perfil de {{ user.username }}</h2>
 
-    <ul>
+    <!-- Información del usuario -->
+    <ul class="user-info">
         <li><b>Nombre:</b> {{ user.first_name }} {{ user.last_name }}</li>
         <li><b>Correo:</b> {{ user.email }}</li>
         <li><b>Rol:</b> {{ user.rol }}</li>
     </ul>
 
-    <a href="{% url 'logout' %}">Cerrar Sesión</a>
+    <!-- Menú de tareas -->
+    <div class="menu-tareas">
+        <h3>Menú de Tareas</h3>
+        <ul>
+    <li><a href="{% url 'revision' %}">Revisión de correos</a></li>
+    <li><a href="{% url 'planificacion' %}">Planificación del día</a></li>
+    <li><a href="{% url 'desarrollo' %}">Desarrollo de proyecto X</a></li>
+    <li><a href="{% url 'enviar' %}">Enviar informe semanal</a></li>
+    <li><a href="{% url 'reunion' %}">Reunión con el equipo</a></li>
+</ul>
+    </div>
+
+    <!-- Logout -->
+    <div class="logout">
+        <form action="{% url 'logout' %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit">Cerrar Sesión</button>
+        </form>
+    </div>
 </body>
 </html>

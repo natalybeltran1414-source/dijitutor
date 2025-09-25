@@ -3,6 +3,9 @@ from django.contrib.auth import login
 from .forms import RegistroForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, logout
+from django.contrib.auth.decorators import login_required
+
 
 def registro_view(request):
     if request.method == 'POST':
@@ -33,3 +36,26 @@ def login_view(request):
 # 👇 Por si quieres añadir más adelante
 def diagnostico_view(request):
     return render(request, 'usuarios/diagnostico.html')
+
+
+def home_view(request):
+    return render(request, "home.html")
+
+def revision(request):
+    return render(request, 'usuarios/revision.html')
+
+@login_required
+def planificacion(request):
+    return render(request, 'usuarios/planificacion.html')
+
+@login_required
+def desarrollo(request):
+    return render(request, 'usuarios/desarrollo.html')
+
+@login_required
+def enviar(request):
+    return render(request, 'usuarios/enviar.html')
+
+@login_required
+def reunion(request):
+    return render(request, 'usuarios/reunion.html')

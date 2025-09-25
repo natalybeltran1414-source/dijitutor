@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Enviar informe semanal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 30px;
+        }
+        h2 {
+            color: #4CAF50;
+        }
+        .contenido {
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            text-align: left;
+            width: 60%;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Enviar informe semanal</h2>
+    <div class="contenido">
+        <p>Instrucciones para enviar el informe:</p>
+        <ul>
+            <li>Revisar las tareas completadas durante la semana.</li>
+            <li>Completar el documento de informe semanal.</li>
+            <li>Adjuntar archivos relevantes si es necesario.</li>
+            <li>Enviar el informe al correo del supervisor o equipo correspondiente.</li>
+            <li>Confirmar la recepción del informe.</li>
+        </ul>
+    </div>
+
+    <a href="{% url 'perfil' %}">Volver al perfil</a>
+</body>
+</html>

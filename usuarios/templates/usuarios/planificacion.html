@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Planificación del día</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 30px;
+        }
+        h2 {
+            color: #4CAF50;
+        }
+        .contenido {
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            text-align: left;
+            width: 60%;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Planificación del día</h2>
+    <div class="contenido">
+        <p>Hoy tu agenda incluye:</p>
+        <ul>
+            <li>08:00 - 09:00: Revisión de correos</li>
+            <li>09:00 - 11:00: Planificación de tareas importantes</li>
+            <li>11:00 - 12:30: Desarrollo de proyecto X</li>
+            <li>12:30 - 13:30: Almuerzo</li>
+            <li>13:30 - 15:00: Reunión con el equipo</li>
+            <li>15:00 - 17:00: Finalización de tareas pendientes</li>
+        </ul>
+    </div>
+
+    <a href="{% url 'perfil' %}">Volver al perfil</a>
+</body>
+</html>
