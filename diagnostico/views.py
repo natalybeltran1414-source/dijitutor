@@ -1,3 +1,7 @@
 from django.shortcuts import render
 
-# Create your views here.
+def index(request):
+    return render(request, "diagnostico/index.html")
+
+def detalle(request, pk):
+    return render(request, "diagnostico/detalle.html", {"pk": pk})

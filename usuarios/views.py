@@ -3,16 +3,33 @@ from django.contrib.auth import login
 from .forms import RegistroForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.views import LoginView, LogoutView
 
-# Create your views here.
-def registro(request):
+def registro_view(request):
     if request.method == 'POST':
         form = RegistroForm(request.POST)
         if form.is_valid():
             usuario = form.save()
             login(request, usuario)
-            return redirect('nombre_de_la_vista_deseada')
+            return redirect('perfil')
     else:
         form = RegistroForm()
     return render(request, 'usuarios/registro.html', {'form': form})
+
+@login_required
+def perfil_view(request):
+    return render(request, 'usuarios/perfil.html', {'user': request.user})
+
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('perfil')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'usuarios/login.html', {'form': form})
+
+# 👇 Por si quieres añadir más adelante
+def diagnostico_view(request):
+    return render(request, 'usuarios/diagnostico.html')
