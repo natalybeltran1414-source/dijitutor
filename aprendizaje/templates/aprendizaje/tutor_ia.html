@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Tutor IA Básico</h1>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="pregunta" placeholder="Haz una pregunta">
+    <button type="submit">Preguntar</button>
+</form>
+{% if respuesta %}
+    <p>Respuesta: {{ respuesta }}</p>
+{% endif %}
+<h2>FAQ Frecuentes</h2>
+<ul>
+    {% for item in faq %}
+        <li><strong>{{ item.pregunta }}</strong>: {{ item.respuesta }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Diagnóstico Inicial</h1>
+<form method="post">
+    {% csrf_token %}
+    {% for pregunta in cuestionario.preguntas.all %}
+        <p>{{ pregunta.texto }}</p>
+        {% for opcion in pregunta.opciones %}
+            <input type="radio" name="pregunta_{{ pregunta.id }}" value="{{ opcion.texto }}"> {{ opcion.texto }}<br>
+        {% endfor %}
+    {% endfor %}
+    <button type="submit">Enviar Diagnóstico</button>
+</form>
+{% endblock %}

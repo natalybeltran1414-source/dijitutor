@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Módulos Disponibles</h1>
+<p>Estos son los módulos recomendados basados en tu diagnóstico.</p>
+<ul>
+    {% for progreso in progresos %}
+    <li>
+        <strong>{{ progreso.modulo.titulo }}</strong> - {{ progreso.modulo.descripcion }}
+        <a href="{% url 'iniciar_modulo' progreso.id %}">Iniciar</a>  <!-- Agrega url para iniciar si quieres -->
+    </li>
+    {% empty %}
+    <li>No hay módulos disponibles actualmente.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Módulos Completados</h1>
+<p>Módulos que has finalizado.</p>
+<ul>
+    {% for progreso in progresos %}
+    <li>
+        <strong>{{ progreso.modulo.titulo }}</strong> - Completado el {{ progreso.fecha_fin|date }}
+    </li>
+    {% empty %}
+    <li>No has completado módulos aún.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

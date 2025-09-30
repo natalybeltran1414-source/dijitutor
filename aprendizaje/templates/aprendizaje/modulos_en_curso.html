@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Módulos en Curso</h1>
+<p>Módulos que estás realizando actualmente.</p>
+<ul>
+    {% for progreso in progresos %}
+    <li>
+        <strong>{{ progreso.modulo.titulo }}</strong> - Progreso: {{ progreso.progreso }}%
+        <a href="{% url 'continuar_modulo' progreso.id %}">Continuar</a>
+    </li>
+    {% empty %}
+    <li>No hay módulos en curso.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

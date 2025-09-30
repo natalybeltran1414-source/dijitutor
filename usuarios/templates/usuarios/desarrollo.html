@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Desarrollo de proyecto </title>
-</head>
-<body>
-    <h2>Desarrollo de proyecto</h2>
-    <p>Aquí puedes trabajar en tu proyecto y ver los avances.</p>
-    <a href="{% url 'perfil' %}">Volver al perfil</a>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Desarrollo de proyecto</h2>
+<p>Aquí puedes trabajar en tu proyecto y ver los avances.</p>
+<a href="{% url 'perfil' %}" class="back-link">Volver al perfil</a>
+{% endblock %}

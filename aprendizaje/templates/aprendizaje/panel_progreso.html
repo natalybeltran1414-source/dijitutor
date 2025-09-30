@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Panel de Progreso</h1>
+<p>Avance general: {{ avance }}%</p>
+<ul>
+    <li>Disponibles: {{ disponibles }}</li>
+    <li>En curso: {{ en_curso }}</li>
+    <li>Completados: {{ completados }}</li>
+</ul>
+{% if certificado_disponible %}
+    <a href="{% url 'generar_certificado' %}">Descargar Certificado</a>
+{% endif %}
+{% endblock %}

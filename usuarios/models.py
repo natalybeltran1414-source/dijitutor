@@ -20,6 +20,7 @@ class UsuarioManager(BaseUserManager):
     def create_superuser(self, username, email, first_name, last_name, password=None, **extra_fields):
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
+        extra_fields.setdefault("is_active", True)
 
         return self.create_user(username, email, first_name, last_name, password, **extra_fields)
 
@@ -31,14 +32,13 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
-    
     ROLES = [
         ('colaborador', 'Colaborador'),
         ('administrador', 'Administrador'),
     ]
     rol = models.CharField(max_length=20, choices=ROLES, default='colaborador')
 
-    objects = UsuarioManager()  # Conecta el manager personalizado
+    objects = UsuarioManager()
 
     USERNAME_FIELD = "username"
     REQUIRED_FIELDS = ["email", "first_name", "last_name"]
@@ -51,4 +51,3 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return self.first_name
-

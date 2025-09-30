@@ -1,21 +1,16 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Inicio</title>
-</head>
-<body>
-    <h1>Bienvenido</h1>
-    {% if user.is_authenticated %}
-        <p>Hola, {{ user.username }} </p>
-        <a href="{% url 'perfil' %}">Ir a mi perfil</a> |
-        <form action="{% url 'logout' %}" method="post" style="display:inline;">
-            {% csrf_token %}
-            <button type="submit">Cerrar sesión</button>
-        </form>
-    {% else %}
-        <a href="{% url 'login' %}">Iniciar sesión</a> |
-        <a href="{% url 'registro' %}">Registrarme</a>
-    {% endif %}
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Bienvenido</h1>
+{% if user.is_authenticated %}
+    <p>Hola, {{ user.username }}</p>
+    <a href="{% url 'perfil' %}">Ir a mi perfil</a> |
+    <form action="{% url 'logout' %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit">Cerrar sesión</button>
+    </form>
+{% else %}
+    <a href="{% url 'login' %}">Iniciar sesión</a> |
+    <a href="{% url 'registro' %}">Registrarme</a>
+{% endif %}
+{% endblock %}
